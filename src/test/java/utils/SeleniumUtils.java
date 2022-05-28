@@ -2,7 +2,6 @@ package utils;
 
 import dataProvider.ConfigFileReader;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -46,7 +45,7 @@ public class SeleniumUtils {
             element = wait.until(ExpectedConditions.presenceOfElementLocated(by));
 
             driver.manage().timeouts().implicitlyWait(Long.parseLong(configFileReader.getProperty("defaultImplicitlyWait")), TimeUnit.SECONDS); //reset implicitlyWait
-            return element; //return the element
+            return element;
         } catch (Exception e) {
             logger.error(e.toString());
         }
@@ -70,7 +69,5 @@ public class SeleniumUtils {
             e.printStackTrace();
         }
         form.click();
-        // driver.findElement(By.id("buildTypeSettingsContainer")).click();
-        //     SeleniumUtils.waitVisibilityOfElement(driver, stepNameInput, 10);
     }
 }

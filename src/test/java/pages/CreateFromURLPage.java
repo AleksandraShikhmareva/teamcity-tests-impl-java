@@ -38,7 +38,7 @@ public class CreateFromURLPage {
         return successVcsConnectMessage.getText();
     }
 
-    @Step("Add project {projectName}. Set branch {branch}")
+    @Step("Add project \"{projectName}\". Set Default branch = {branch}")
     public void addGeneralProjectProperties(String branch, String projectName) {
         projectNameInput.clear();
         projectNameInput.sendKeys(projectName);
@@ -47,7 +47,7 @@ public class CreateFromURLPage {
         proceedBtn.click();
     }
 
-    @Step("Add build {buildName}. Set branch {branch}")
+    @Step("Add build {buildName}. Set Default branch = {branch}")
     public CreateFromURLPage addGeneralBuildProperties(String branch, String buildName) {
         buildTypeNameInput.clear();
         buildTypeNameInput.sendKeys(buildName);

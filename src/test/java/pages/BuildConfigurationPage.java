@@ -76,20 +76,8 @@ public class BuildConfigurationPage {
     @FindBy(id = "buildStepName")
     private WebElement stepNameInput;
 
-    @FindBy(id = "runTypeInfoKey")
-    private WebElement runnerTypeSelect;
-
-    @FindBy(id = "runTypeInfoKey")
-    private WebElement runnerForm;
-
     @FindBy(id = "buildTypeSettingsContainer")
     private WebElement buildTypeSettingsContainer;
-
-    @FindBy(xpath = "//h2[text()='Auto-detected Build Steps']")
-    private WebElement autoDetectedLabel;
-
-    @FindBy(xpath = "//table[@class='parametersTable']")
-    private WebElement stepsTable;
 
     @FindBy(xpath = "//div[@id='mainContent']//input[@type='submit']")
     private WebElement saveBuildStepBtn;
@@ -114,20 +102,12 @@ public class BuildConfigurationPage {
     @FindBy(id = "-ufd-teamcity-ui-runTypeInfoKey")
     private WebElement optionInput;
 
-    @FindBy(xpath = "//a[@class='btn btn_primary']")
-    private WebElement useSelectedBtn;
-
-    @FindBy(id = "runnerId")
-    private WebElement stepsCheckBox;
-
     @FindBy(xpath = "//div//button[text()='Run']")
     private WebElement runBtn;
 
     @FindBy(id = "footer")
     private WebElement footer;
 
-    @FindBy(id = "projectId")
-    private WebElement selectNameProject;
 
     public void goToConfigurationPage() {
         SeleniumUtils.waitElementToBeClickable(driver, goToConfigurationPageBtn, 5);
@@ -203,16 +183,7 @@ public class BuildConfigurationPage {
 
     /*Methods for Build Steps Tab*/
 
-    @Step("Add auto detected build step")
-    public BuildConfigurationPage addAutoDetectedBuildStep() {
-        SeleniumUtils.waitVisibilityOfElement(driver, autoDetectedLabel, 5);
-        SeleniumUtils.waitVisibilityOfElement(driver, stepsTable, 30);
-        stepsCheckBox.click();
-        useSelectedBtn.click();
-        return this;
-    }
-
-    @Step("Add new build step {stepName} with runner type {runner}")
+    @Step("Add new build step \"{stepName}\" with runner type \"{runner}\"")
     public BuildConfigurationPage addNewBuildStep(String runner, String stepName, String goals, String runnerArgs) {
         SeleniumUtils.waitElementToBeClickable(driver, addNewBtn, 10);
         addNewBtn.click();

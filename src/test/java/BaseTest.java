@@ -6,9 +6,7 @@ import org.openqa.selenium.chrome.ChromeOptions;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.Listeners;
+import org.testng.annotations.*;
 import utils.ApiHelper;
 
 import java.util.concurrent.TimeUnit;
@@ -22,7 +20,7 @@ public abstract class BaseTest {
     ConfigFileReader configFileReader = new ConfigFileReader();
     protected ApiHelper apiHelper = new ApiHelper();;
 
-    @BeforeClass
+    @BeforeSuite
     public void setUp(ITestContext iTestContext) {
         logger.info("Starting chrome driver");
         if (configFileReader.getProperty("mode").equals("remoteRun")) {
@@ -43,7 +41,7 @@ public abstract class BaseTest {
         iTestContext.setAttribute("driver", driver);
     }
 
-    @AfterClass
+    @AfterSuite
     public void close() {
         driver.close();
         logger.info("Closing driver");

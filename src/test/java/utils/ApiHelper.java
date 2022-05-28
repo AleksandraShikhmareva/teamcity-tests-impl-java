@@ -19,7 +19,7 @@ public class ApiHelper {
         RestAssured.baseURI = configFileReader.getProperty("url");
     }
 
-    public String waitForBuildFinishing(int buildId) {
+    public String getStatusAfterBuildComplete(int buildId) {
         int pollingEfforts = 0;
         int lastBuildId = getLastBuildId();
         while (pollingEfforts < 5) {

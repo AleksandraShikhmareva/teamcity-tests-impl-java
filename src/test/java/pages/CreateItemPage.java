@@ -46,7 +46,7 @@ public class CreateItemPage {
     @FindBy(xpath = "//div[@class='saveButtonsBlock']/input[@value='Save']")
     private WebElement saveBtn;
 
-    @Step("Create project from GitHub public repository with URL = {projectUrl}")
+    @Step("Create project on \"From a repository URL\" tab with GitHub public repository URL = {projectUrl}")
     public void addProjectFromRemoteRepository(String projectUrl) {
         createFromUrl.click();
         SeleniumUtils.waitElementToBeClickable(driver, urlInput, 5);
@@ -54,7 +54,7 @@ public class CreateItemPage {
         proceedBtn.click();
     }
 
-    @Step("Create project {projectName} manually")
+    @Step("Create project \"{projectName}\" manually")
     public void createProjectManually(String projectName) {
         createManually.click();
         SeleniumUtils.waitElementToBeClickable(driver, nameInput, 5);

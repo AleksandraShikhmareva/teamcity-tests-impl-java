@@ -1,19 +1,12 @@
 package listeners;
 
-import io.qameta.allure.Attachment;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.internal.IResultListener;
 import utils.CommonUtils;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class BaseTestListener implements IResultListener {
 

@@ -8,7 +8,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import utils.ApiHelper;
 
 public class BuildsPage {
     private static Logger logger = LoggerFactory.getLogger(BuildsPage.class);
@@ -40,4 +39,3 @@ public class BuildsPage {
         driver.findElement(By.xpath("//div[@data-build-id = '" + buildId + "']//*[contains(@class, 'MiddleEllipsis__searchable')]")).click();
     }
 }
-//div[contains(@class, 'BuildDetails')]//span[text()='Success']

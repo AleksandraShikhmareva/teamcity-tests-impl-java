@@ -27,7 +27,7 @@ public class ProjectSettingsPage {
         createBuildConfigurationBtn.click();
     }
 
-    @Step("Open configuration of build with name {buildConfigurationName}")
+    @Step("Open configuration of build with name \"{buildConfigurationName}\"")
     public void openBuildConfiguration(String buildConfigurationName) {
         driver.findElement(By.xpath("//table[@id='configurations']//strong[text()='" + buildConfigurationName + "']/parent::td")).click();
     }
