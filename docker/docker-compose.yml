@@ -1,0 +1,38 @@
+version: '2'
+services:
+  teamcity-server-instance:
+    image: jetbrains/teamcity-server
+    ports:
+     - "8111:8111"
+    restart: always
+    volumes:
+      - /home/sasha/teamcity/data:/data/teamcity_server/datadir
+      - /home/sasha/teamcity/logs:/opt/teamcity/logs
+    networks:
+      - teamcity-network
+
+  teamcity-agent-instance:
+    image: jetbrains/teamcity-agent
+    privileged: true
+    restart: always
+    volumes:
+      - /home/sasha/teamcity/agent-conf:/data/teamcity_agent/conf
+    environment:
+      - SERVER_URL=teamcity-server-instance:8111
+    networks:
+      - teamcity-network  
+
+teamcity-agent-instance-2:
+    image: aleksandrashih/custom:2
+    privileged: true
+    restart: always
+    volumes:
+      - /dev/shm:/dev/shm
+      - /home/sasha/teamcity/agent-conf-2:/data/teamcity_agent/conf
+    environment:
+      - SERVER_URL=teamcity-server-instance:8111
+    networks:
+      - teamcity-network
+
+networks:
+  teamcity-network:
