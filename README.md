@@ -10,7 +10,7 @@ Tests implement the POM pattern: **page-related-classes** is stored in **src/tes
 
 Tests use API methods to simplify some checks and speed up tests.
 
-The tests will generate a log as they run. If there are any failed tests, the tests will take a screenshot and attach it to the test report.
+Tests will generate a log as they run. If there are any failed tests, the tests will take a screenshot and attach it to the test report.
 
 ## Remote run
 
