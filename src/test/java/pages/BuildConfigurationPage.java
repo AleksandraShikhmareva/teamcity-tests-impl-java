@@ -174,7 +174,7 @@ public class BuildConfigurationPage {
     public BuildConfigurationPage addNewParameter(String name, String value) {
         SeleniumUtils.waitElementToBeClickable(driver, addNewBtn, 10);
         addNewBtn.click();
-        SeleniumUtils.waitVisibilityOfElement(driver, parameterNameInput, 10)
+        SeleniumUtils.waitVisibilityOfElement(driver, parameterNameInput, 10);
         parameterNameInput.sendKeys(name);
         parameterValueInput.sendKeys(value);
         submitBtn.click();
