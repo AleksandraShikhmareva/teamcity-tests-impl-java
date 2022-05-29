@@ -21,19 +21,19 @@ public class ApiHelper {
 
     public String getStatusAfterBuildComplete(int buildId) {
         int pollingEfforts = 0;
-        int lastBuildId = getLastBuildId();
         while (pollingEfforts < 5) {
             if (buildId != getLastBuildId()) {
                 try {
                     Thread.sleep(15000);
                     logger.info("Requesting status of build with id " + buildId);
-                    lastBuildId = getLastBuildId();
                     pollingEfforts++;
                 } catch (InterruptedException e) {
                     logger.error(e.toString());
                 }
             } else break;
-            // throw new Exception("Build not found");?
+        }
+        if (pollingEfforts==5){
+            throw new IllegalStateException("Build not found");
         }
         return getStatus(buildId);
     }
