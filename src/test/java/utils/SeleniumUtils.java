@@ -28,7 +28,7 @@ public class SeleniumUtils {
             new WebDriverWait(driver, timeOutInSeconds)
                     .until(ExpectedConditions.elementToBeClickable(element));
         } catch (Exception e) {
-            logger.error(e.toString());
+            logger.error("Wait element exception", e);
         } finally {
             driver.manage().timeouts().implicitlyWait(Long.parseLong(configFileReader.getProperty("defaultImplicitlyWait")), TimeUnit.SECONDS); //reset implicitlyWait
         }
@@ -47,7 +47,7 @@ public class SeleniumUtils {
             driver.manage().timeouts().implicitlyWait(Long.parseLong(configFileReader.getProperty("defaultImplicitlyWait")), TimeUnit.SECONDS); //reset implicitlyWait
             return element;
         } catch (Exception e) {
-            logger.error(e.toString());
+            logger.error("Wait element exception", e);
         }
         return null;
     }
