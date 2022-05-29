@@ -24,7 +24,7 @@ public class SeleniumUtils {
             new WebDriverWait(driver, Duration.ofSeconds(timeOutInSeconds))
                     .until(ExpectedConditions.elementToBeClickable(element));
         } catch (Exception e) {
-            logger.error("Wait element exception", e);
+            logger.error("Element not found:", e);
         }
     }
 
@@ -35,7 +35,7 @@ public class SeleniumUtils {
                     until(ExpectedConditions.presenceOfElementLocated(by));
 
         } catch (Exception e) {
-            logger.error("Wait element exception", e);
+            logger.error("Element not found:", e);
         }
     }
 
@@ -49,11 +49,11 @@ public class SeleniumUtils {
         select.clear();
         select.sendKeys(value);
         WebElement selectedValue = driver.findElement(By.xpath("//li[@data-title='" + value + "']"));
-        SeleniumUtils.waitVisibilityOfElement(driver, selectedValue, 10);
         try {
+            SeleniumUtils.waitVisibilityOfElement(driver, selectedValue, 10);
             Thread.sleep(1000);
         } catch (InterruptedException e) {
-            e.printStackTrace();
+            logger.error("Element not found:", e);
         }
         form.click();
     }
