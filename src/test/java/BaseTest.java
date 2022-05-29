@@ -23,13 +23,19 @@ public abstract class BaseTest {
     @BeforeSuite
     public void setUp(ITestContext iTestContext) {
         logger.info("Starting chrome driver");
+        System.setProperty("webdriver.chrome.driver", configFileReader.getProperty("pathToDriver"));
         if (configFileReader.getProperty("mode").equals("remoteRun")) {
-            System.setProperty("webdriver.chrome.driver", configFileReader.getProperty("pathToDriver"));
             ChromeOptions options = new ChromeOptions();
-            options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage", "start-maximized", "disable-infobars", "--disable-extensions");
+            options.addArguments(
+                    "--headless",
+                    "--no-sandbox",
+                    "--disable-dev-shm-usage",
+                    "start-maximized",
+                    "disable-infobars",
+                    "--disable-extensions"
+            );
             driver = new ChromeDriver(options);
         } else if (configFileReader.getProperty("mode").equals("localRun")) {
-            System.setProperty("webdriver.chrome.driver", configFileReader.getProperty("pathToDriver"));
             driver = new ChromeDriver();
             driver.manage().window().fullscreen();
             driver.manage().window().maximize();
