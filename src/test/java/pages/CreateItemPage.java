@@ -49,7 +49,7 @@ public class CreateItemPage {
     @Step("Create project on \"From a repository URL\" tab with GitHub public repository URL = {projectUrl}")
     public void addProjectFromRemoteRepository(String projectUrl) {
         createFromUrl.click();
-        SeleniumUtils.waitElementToBeClickable(driver, urlInput, 5);
+        SeleniumUtils.waitVisibilityOfElement(driver, urlInput, 5);
         urlInput.sendKeys(projectUrl);
         proceedBtn.click();
     }
@@ -57,7 +57,7 @@ public class CreateItemPage {
     @Step("Create project \"{projectName}\" manually")
     public void createProjectManually(String projectName) {
         createManually.click();
-        SeleniumUtils.waitElementToBeClickable(driver, nameInput, 5);
+        SeleniumUtils.waitVisibilityOfElement(driver, nameInput, 5);
         nameInput.sendKeys(projectName);
         createBtn.click();
         SeleniumUtils.waitVisibilityOfElement(driver, successMessage, 5);

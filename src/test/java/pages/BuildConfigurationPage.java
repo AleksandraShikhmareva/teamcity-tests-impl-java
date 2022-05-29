@@ -174,6 +174,7 @@ public class BuildConfigurationPage {
     public BuildConfigurationPage addNewParameter(String name, String value) {
         SeleniumUtils.waitElementToBeClickable(driver, addNewBtn, 10);
         addNewBtn.click();
+        SeleniumUtils.waitVisibilityOfElement(driver, parameterNameInput, 10)
         parameterNameInput.sendKeys(name);
         parameterValueInput.sendKeys(value);
         submitBtn.click();
@@ -188,7 +189,7 @@ public class BuildConfigurationPage {
         SeleniumUtils.waitElementToBeClickable(driver, addNewBtn, 10);
         addNewBtn.click();
         SeleniumUtils.customSelect(driver, runner, optionInput, buildTypeSettingsContainer);
-        SeleniumUtils.waitElementToBeClickable(driver, stepNameInput, 5);
+        SeleniumUtils.waitVisibilityOfElement(driver, stepNameInput, 5);
         stepNameInput.sendKeys(stepName);
         goalsInput.sendKeys(goals);
         SeleniumUtils.moveToElement(driver, footer);

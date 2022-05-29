@@ -8,8 +8,8 @@ import org.slf4j.LoggerFactory;
 import org.testng.ITestContext;
 import org.testng.annotations.*;
 import utils.ApiHelper;
+import java.time.Duration;
 
-import java.util.concurrent.TimeUnit;
 
 @Listeners({BaseTestListener.class})
 
@@ -40,8 +40,8 @@ public abstract class BaseTest {
             driver.manage().window().fullscreen();
             driver.manage().window().maximize();
         }
-        driver.manage().timeouts().pageLoadTimeout(5, TimeUnit.SECONDS);
-        driver.manage().timeouts().implicitlyWait(Long.parseLong(configFileReader.getProperty("defaultImplicitlyWait")), TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(Duration.ofSeconds(5));
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(Long.parseLong(configFileReader.getProperty("defaultImplicitlyWait"))));
         driver.get(configFileReader.getProperty("url"));
         logger.info("Opening " + configFileReader.getProperty("url"));
         iTestContext.setAttribute("driver", driver);
